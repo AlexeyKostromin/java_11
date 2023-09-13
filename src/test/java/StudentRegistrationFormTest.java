@@ -47,7 +47,8 @@ public class StudentRegistrationFormTest {
         $("[class=react-datepicker__year-select]").selectOption(yearOfBirth);
         $("[class=react-datepicker__month-select]").selectOption(monthOfBirth);
         //$("[class=react-datepicker__day--0"+dayOfBirth).click();
-        $(".react-datepicker__day--0"+dayOfBirth).click();
+        //$(".react-datepicker__day--0"+dayOfBirth).click();
+        $x(String.format("//div[contains(@class, 'react-datepicker__day--0%s')]", dayOfBirth)).click();
 
         $("[id=subjectsInput]").setValue(subjects).pressEnter();
         $(byText(hobby)).click();
