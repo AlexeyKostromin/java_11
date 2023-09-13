@@ -12,7 +12,7 @@ public class StudentRegistrationFormTest {
     static void beforeAll() {
         Configuration.holdBrowserOpen = false;
         Configuration.browserSize = "1920x1280";
-        Configuration.baseUrl = "https://demoqa.com/";
+        Configuration.baseUrl = "https://demoqa.com";
         //Configuration.pageLoadStrategy="eager";
     }
 
@@ -32,7 +32,7 @@ public class StudentRegistrationFormTest {
         final String state= "Haryana";
         final String city= "Karnal";
 
-        open("automation-practice-form");
+        open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
 
@@ -44,8 +44,8 @@ public class StudentRegistrationFormTest {
         $("[id=userNumber]").setValue(phone);
 
         $("[id=dateOfBirthInput]").click();
-        $("[class=react-datepicker__year-select").selectOption(yearOfBirth);
-        $("[class=react-datepicker__month-select").selectOption(monthOfBirth);
+        $("[class=react-datepicker__year-select]").selectOption(yearOfBirth);
+        $("[class=react-datepicker__month-select]").selectOption(monthOfBirth);
         //$("[class=react-datepicker__day--0"+dayOfBirth).click();
         $(".react-datepicker__day--0"+dayOfBirth).click();
 
@@ -69,6 +69,7 @@ public class StudentRegistrationFormTest {
                 text(dayOfBirth + " " + monthOfBirth + "," + yearOfBirth),
                 text(subjects),
                 text(hobby),
+                text("File1.png"),
                 text(address),
                 text(state + " " + city)
         );
