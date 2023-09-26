@@ -24,7 +24,6 @@ public class SelenideWikiTest {
         $("[id=user-content-3-using-junit5-extend-test-class]").shouldHave(text("3. Using JUnit5 extend test class:"));
         //$("[id=user-content-3-using-junit5-extend-test-class]").sibling(0).shouldHave(text("SoftAssertsExtension"));
         $x("//*[contains(@id, 'using-junit5-extend')]/following-sibling::div[1]").shouldHave(text("SoftAssertsExtension"));
-        sleep(5000);
     }
 
 }
