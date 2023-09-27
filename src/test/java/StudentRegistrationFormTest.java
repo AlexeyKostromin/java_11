@@ -48,7 +48,8 @@ public class StudentRegistrationFormTest {
         $("[class=react-datepicker__year-select]").selectOption(yearOfBirth);
         $("[class=react-datepicker__month-select]").selectOption(monthOfBirth);
         //$(".react-datepicker__day--027:not(.react-datepicker__day--outside-month").click();
-        $x(String.format("//*[contains(@class, 'datepicker__day--0%s')][not(contains(@class, 'datepicker__day--outside-month'))]", dayOfBirth)).click();
+        //$x(String.format("//*[contains(@class, 'datepicker__day--0%s')][not(contains(@class, 'datepicker__day--outside-month'))]", dayOfBirth)).click();
+        $x(String.format("//*[contains(@class, 'datepicker__day--0%s') and not(contains(@class, 'datepicker__day--outside-month'))]", dayOfBirth)).click();
 
         $("[id=subjectsInput]").setValue(subjects).pressEnter();
         $(byText(hobby)).click();
