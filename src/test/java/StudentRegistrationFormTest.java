@@ -2,6 +2,7 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -46,9 +47,8 @@ public class StudentRegistrationFormTest {
         $("[id=dateOfBirthInput]").click();
         $("[class=react-datepicker__year-select]").selectOption(yearOfBirth);
         $("[class=react-datepicker__month-select]").selectOption(monthOfBirth);
-        //$("[class=react-datepicker__day--0"+dayOfBirth).click();
-        //$(".react-datepicker__day--0"+dayOfBirth).click();
-        $x(String.format("//div[contains(@class, 'react-datepicker__day--0%s')]", dayOfBirth)).click();
+        //$(".react-datepicker__day--027:not(.react-datepicker__day--outside-month").click();
+        $x(String.format("//*[contains(@class, 'datepicker__day--0%s')][not(contains(@class, 'datepicker__day--outside-month'))]", dayOfBirth)).click();
 
         $("[id=subjectsInput]").setValue(subjects).pressEnter();
         $(byText(hobby)).click();
@@ -62,6 +62,7 @@ public class StudentRegistrationFormTest {
 
         $("[id=submit]").click();
 
+        $("[class=table-responsive]").should(appear);
         $("[class=table-responsive]").shouldHave(
                 text(firstName +" " + lastName),
                 text(userEmail),
