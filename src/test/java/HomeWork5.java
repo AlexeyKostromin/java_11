@@ -22,7 +22,7 @@ public class HomeWork5 {
     @Test
     public void solutionsEnterprizeTest(){
         open("https://github.com");
-        $(byText("Solutions")).hover();
+        $("[aria-label=Global]").$(byText("Solutions")).hover();
         $("[aria-labelledby=solutions-for-heading]").$(byText("Enterprise")).click();
         webdriver().shouldHave(WebDriverConditions.url("https://github.com/enterprise"));
         $("[class=font-mktg]").shouldHave(Condition.text("Build like the best"));
