@@ -12,7 +12,7 @@ import static com.codeborne.selenide.DragAndDropOptions.to;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class HomeWork5 {
+public class HomeWork5Tests {
     @BeforeAll
     static void beforeAll() {
         Configuration.holdBrowserOpen = false;
