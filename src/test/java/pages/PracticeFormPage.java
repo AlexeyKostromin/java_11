@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.support.Color;
 import pages.components.CalendarComponent;
 
 import static com.codeborne.selenide.Condition.appear;
@@ -9,7 +10,8 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeFormPage {
-
+    private final String expectedColorRed = "#dc3545";
+    private final String expectedColorGreen = "#28a745";
     SelenideElement
             firstNameInput = $("[id=firstName]"),
             lastNameInput = $x("//input[@id='lastName']"),
@@ -100,7 +102,6 @@ public class PracticeFormPage {
 
     public PracticeFormPage submitForm() {
         submitBtn.click();
-        resultTable.should(appear);
         return this;
     }
 
@@ -109,16 +110,49 @@ public class PracticeFormPage {
         return this;
     }
 
+    public void resultTableShouldBeDisplayed(boolean flag) {
+        if (flag) {
+            resultTable.should(appear);
+        }
+        else {
+            resultTable.shouldNot(appear);
+        }
+    }
 
+    public PracticeFormPage verifyRequiredFieldsColor() {
+        sleep(200);
+        var colorHexFirstName  = Color.fromString(firstNameInput.getCssValue("border-color")).asHex();
+        var colorHexLastName  = Color.fromString(lastNameInput.getCssValue("border-color")).asHex();
+        var colorHexPhone  = Color.fromString(phoneInput.getCssValue("border-color")).asHex();
 
+        if (!colorHexFirstName.equals(expectedColorRed)){
+            throw new RuntimeException("firstNameInput color was: " + colorHexFirstName + ", but expected: " + expectedColorRed);
+        }
+        if (!colorHexLastName.equals(expectedColorRed)){
+            throw new RuntimeException("firstNameInput color was: " + colorHexLastName + ", but expected: " + expectedColorRed);
+        }
+        if (!colorHexPhone.equals(expectedColorRed)){
+            throw new RuntimeException("firstNameInput color was: " + colorHexPhone + ", but expected: " + expectedColorRed);
+        }
+        return this;
 
+    }
+    public PracticeFormPage verifyNonRequiredFieldsColor() {
+        sleep(200);
+        var colorHexEmail = Color.fromString(emailInput.getCssValue("border-color")).asHex();
+        var colorHexDate = Color.fromString(dateOfBirthInput.getCssValue("border-color")).asHex();
+        var colorHexAddress = Color.fromString(addressInput.getCssValue("border-color")).asHex();
 
-
-
-
-
-
-
-
+        if (!colorHexEmail.equals(expectedColorGreen)) {
+            throw new RuntimeException("firstNameInput color was: " + colorHexEmail + ", but expected: " + expectedColorGreen);
+        }
+        if (!colorHexDate.equals(expectedColorGreen)) {
+            throw new RuntimeException("firstNameInput color was: " + colorHexDate + ", but expected: " + expectedColorGreen);
+        }
+        if (!colorHexAddress.equals(expectedColorGreen)) {
+            throw new RuntimeException("firstNameInput color was: " + colorHexAddress + ", but expected: " + expectedColorGreen);
+        }
+        return this;
+    }
 
 }
