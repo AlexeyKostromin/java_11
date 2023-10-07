@@ -31,6 +31,11 @@ public class PracticeFormPage {
 
     public PracticeFormPage openPage() {
         open("/automation-practice-form");
+        removeFooter();
+        return this;
+    }
+
+    public PracticeFormPage removeFooter() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         return this;
@@ -61,9 +66,10 @@ public class PracticeFormPage {
         return this;
     }
 
-    public PracticeFormPage setDate(String dayOfBirth, String monthOfBirth, String yearOfBirth) {
+    public PracticeFormPage setDate(String[] date) {
         dateOfBirthInput.click();
-        new CalendarComponent().selectDate(dayOfBirth, monthOfBirth, yearOfBirth);
+        //new CalendarComponent().selectDate(dayOfBirth, monthOfBirth, yearOfBirth);
+        new CalendarComponent().selectDate(date[0], date[1], date[2]);
         return this;
     }
 
