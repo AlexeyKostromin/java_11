@@ -1,5 +1,6 @@
 package tests;
 
+import Helpers.RandomStudentDataGenerator;
 import org.junit.jupiter.api.Test;
 import pages.PracticeFormPage;
 

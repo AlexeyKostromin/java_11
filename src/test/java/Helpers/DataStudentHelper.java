@@ -1,4 +1,4 @@
-package tests;
+package Helpers;
 
 import utils.RandomDataUtils;
 

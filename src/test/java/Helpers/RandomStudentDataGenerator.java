@@ -1,8 +1,9 @@
-package tests;
+package Helpers;
+
 
 public class RandomStudentDataGenerator {
     DataStudentHelper dataStudentHelper = new DataStudentHelper();
-    final String
+    public final String
             firstName = dataStudentHelper.generateFirstName(),
             lastName = dataStudentHelper.generateLastName(),
             userEmail = dataStudentHelper.generateEmail(),
@@ -14,6 +15,6 @@ public class RandomStudentDataGenerator {
             address= dataStudentHelper.generateFullAddress(),
             state= dataStudentHelper.getState(),
             city= dataStudentHelper.getCity(state);
-            final String[] dateOfBirth = dataStudentHelper.generateDateOfBirthFaker();
+    public final String[] dateOfBirth = dataStudentHelper.generateDateOfBirthFaker();
 
 }
