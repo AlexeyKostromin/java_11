@@ -4,29 +4,15 @@ import com.github.javafaker.Faker;
 import io.netty.util.internal.ThreadLocalRandom;
 import org.apache.commons.lang3.RandomStringUtils;
 
+import java.text.SimpleDateFormat;
 import java.time.Month;
+import java.util.Locale;
 
 public class RandomDataUtils {
-    private Faker faker;
+    protected Faker faker;
     
     public RandomDataUtils() {
-        faker = new Faker();
-    }
-
-    public String generateFirstName() {
-        return faker.name().firstName();
-    }
-
-    public String generateLastName() {
-        return faker.name().lastName();
-    }
-
-    public String generateEmail() {
-        return faker.internet().emailAddress();
-    }
-
-    public String generateFullAddress() {
-        return faker.address().fullAddress();
+        faker = new Faker(new Locale("en-US"));
     }
 
     public String[] generateDateOfBirth() {
@@ -37,11 +23,25 @@ public class RandomDataUtils {
           return new String[] {randomDay, randomMonth, randomYear};
     }
 
+    public String[] generateDateOfBirthFaker(){
+        var randomBirthday = faker.date().birthday(15, 65);//Sun Aug 04 22:09:15 CEST 1991
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MMMM/yyyy", Locale.ENGLISH);
+        return sdf.format(randomBirthday).split("/");
+    }
+
     public String getRandomStringFromArray(String[] array) {
         return array[this.getRandomBetween(0, array.length - 1)];
     }
 
+    public <E> E getRandomElementFromArray(E[] array) {
+        return array[faker.random().nextInt(array.length)];
+    }
+
     public int getRandomBetween(int min, int max) {
+        return ThreadLocalRandom.current().nextInt(min, max + 1);
+    }
+
+    public int getRandomBetweenFaker(int min, int max) {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
 
@@ -50,7 +50,12 @@ public class RandomDataUtils {
     }
 
     public String generateStringNumeric(int min, int max) {
-        return RandomStringUtils.randomNumeric(min, max);
+        return Integer.toString(faker.number().numberBetween(min, max));
     }
+
+    public long generateRandomNumberFaker(int numberOfDigits, boolean strict) {
+        return faker.number().randomNumber(numberOfDigits, true);
+    }
+
 
 }

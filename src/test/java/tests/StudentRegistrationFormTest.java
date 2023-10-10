@@ -6,73 +6,60 @@ import pages.PracticeFormPage;
 
 public class StudentRegistrationFormTest extends TestBase {
     PracticeFormPage practiceFormPage = new PracticeFormPage();
-    TestData testData = new TestData();
-    
+
     @Test
     void successSubmitAllFormTest() {
-        final String firstName = testData.generateFirstName();
-        final String lastName = testData.generateLastName();
-        final String userEmail = testData.generateEmail();
-        final String gender= testData.generateGender();
-        final String phone= testData.generateStringNumeric(10,10);
-        final String[] dateOfBirth = testData.generateDateOfBirth();
-        final String subjects= testData.getSubject();
-        final String hobby= testData.getHobby();
-        final String fileName= "File1.png";
-        final String address= testData.generateFullAddress();
-        final String state= testData.getState();
-        final String city= testData.getCity(state);
+
+        RandomStudentDataGenerator rsd = new RandomStudentDataGenerator();
 
         practiceFormPage
                 .openPage()
-                .fillFirstName(firstName)
-                .fillLastName(lastName)
-                .fillEmail(userEmail)
-                .fillGender(gender)
-                .fillPhone(phone)
-                .setDate(dateOfBirth)
-                .setSubject(subjects)
-                .setHobby(hobby)
-                .uploadPicture(fileName)
-                .setAddress(address)
-                .setState(state)
-                .setCity(city)
+                .fillFirstName(rsd.firstName)
+                .fillLastName(rsd.lastName)
+                .fillEmail(rsd.userEmail)
+                .fillGender(rsd.gender)
+                .fillPhone(rsd.phone)
+                .setDate(rsd.dateOfBirth)
+                .setSubject(rsd.subjects)
+                .setHobby(rsd.hobby)
+                .uploadPicture(rsd.fileName)
+                .setAddress(rsd.address)
+                .setState(rsd.state)
+                .setCity(rsd.city)
                 .submitForm()
                 .resultTableShouldBeDisplayed(true);
 
         practiceFormPage
-                .checkResult("Student Name",firstName +" " + lastName)
-                .checkResult("Student Email",userEmail)
-                .checkResult("Gender", gender)
-                .checkResult("Mobile",phone)
-                .checkResult("Date of Birth", dateOfBirth[0] + " " + dateOfBirth[1] + "," + dateOfBirth[2])
-                .checkResult("Subjects", subjects)
-                .checkResult("Hobbies", hobby)
-                .checkResult("Picture", fileName)
-                .checkResult("Address", address)
-                .checkResult("State and City", state + " " + city);
+                .checkResult("Student Name",rsd.firstName +" " + rsd.lastName)
+                .checkResult("Student Email",rsd.userEmail)
+                .checkResult("Gender", rsd.gender)
+                .checkResult("Mobile",rsd.phone)
+                .checkResult("Date of Birth", rsd.dateOfBirth[0] + " " + rsd.dateOfBirth[1] + "," + rsd.dateOfBirth[2])
+                .checkResult("Subjects", rsd.subjects)
+                .checkResult("Hobbies", rsd.hobby)
+                .checkResult("Picture", rsd.fileName)
+                .checkResult("Address", rsd.address)
+                .checkResult("State and City", rsd.state + " " + rsd.city);
     }
 
     @Test
     void successSubmitRequiredFormTest() {
-        final String firstName = testData.generateFirstName();
-        final String lastName = testData.generateLastName();
-        final String gender= testData.generateGender();
-        final String phone= testData.generateStringNumeric(10,10);
+
+        RandomStudentDataGenerator rsd = new RandomStudentDataGenerator();
 
         practiceFormPage
                 .openPage()
-                .fillFirstName(firstName)
-                .fillLastName(lastName)
-                .fillGender(gender)
-                .fillPhone(phone)
+                .fillFirstName(rsd.firstName)
+                .fillLastName(rsd.lastName)
+                .fillGender(rsd.gender)
+                .fillPhone(rsd.phone)
                 .submitForm()
                 .resultTableShouldBeDisplayed(true);
 
         practiceFormPage
-                .checkResult("Student Name",firstName +" " + lastName)
-                .checkResult("Gender", gender)
-                .checkResult("Mobile",phone);
+                .checkResult("Student Name",rsd.firstName +" " + rsd.lastName)
+                .checkResult("Gender", rsd.gender)
+                .checkResult("Mobile",rsd.phone);
     }
 
     @Test
