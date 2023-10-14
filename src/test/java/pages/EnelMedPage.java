@@ -1,15 +1,16 @@
 package pages;
 
-import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.CollectionCondition;
+import com.codeborne.selenide.ElementsCollection;
+
+import java.util.List;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
-//import static com.codeborne.selenide.TypeOptions.text;
 
 public class EnelMedPage {
-    SelenideElement
-            langSwitchBlock = $x("//ul[contains(@class, 'lang-switch')]"),
-            menuItemsBlock= $("[class = navbar-menu]/ul");
+    ElementsCollection langSwitchCollection = $$x("//ul[contains(@class, 'lang-switch')]//a");
+    ElementsCollection menuItemsBlock= $$("[class = navbar-menu] a");
 
     public EnelMedPage openPage() {
         open("https://cm.enel.pl/centrum-medyczne/");
@@ -17,11 +18,15 @@ public class EnelMedPage {
     }
 
     public EnelMedPage selectLanguage(Language language) {
-        var lang = language.name().toString();
-        //langSwitchBlock.find(text(language.name()).toString()).click();
-        //langSwitchBlock.find(text(lang)).click();
+        langSwitchCollection.find(text(language.name())).click();
         return this;
     }
+
+    public EnelMedPage verifyMenuItems(List<String> expectedMenuItems) {
+        menuItemsBlock.shouldHave(CollectionCondition.texts(expectedMenuItems));
+        return this;
+    }
+
     public enum Language {
         PL, EN
     }
