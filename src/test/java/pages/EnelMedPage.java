@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class EnelMedPage {
     ElementsCollection langSwitchCollection = $$x("//ul[contains(@class, 'lang-switch')]//a");
-    ElementsCollection menuItemsBlock= $$("[class = navbar-menu] a");
+    ElementsCollection menuItemsBlock = $$("[class = navbar-menu] a");
 
     public EnelMedPage openPage() {
         open("https://cm.enel.pl/centrum-medyczne/");

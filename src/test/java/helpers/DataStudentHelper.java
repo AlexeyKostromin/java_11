@@ -1,4 +1,4 @@
-package Helpers;
+package helpers;
 
 import utils.RandomDataUtils;
 
@@ -14,6 +14,7 @@ public class DataStudentHelper extends RandomDataUtils {
     private final String fileName = "File1.png";
 
     private final Map<String, String[]> statesAndCities = new HashMap<>();
+
     {
         statesAndCities.put("NCR", new String[]{"Delhi", "Gurgaon", "Noida"});
         statesAndCities.put("Uttar Pradesh", new String[]{"Agra", "Lucknow", "Merrut"});
@@ -52,7 +53,9 @@ public class DataStudentHelper extends RandomDataUtils {
         return faker.options().option(sport);
     }
 
-    public String getFilename() {return this.fileName;}
+    public String getFilename() {
+        return this.fileName;
+    }
 
     public String getState() {
         return faker.options().option(statesAndCities.keySet().toArray()).toString();
@@ -61,7 +64,6 @@ public class DataStudentHelper extends RandomDataUtils {
     public String getCity(String state) {
         return faker.options().option(statesAndCities.get(state));
     }
-
 
 
 }

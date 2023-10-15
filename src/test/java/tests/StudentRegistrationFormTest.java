@@ -1,6 +1,6 @@
 package tests;
 
-import Helpers.RandomStudentDataGenerator;
+import helpers.RandomStudentDataGenerator;
 import org.junit.jupiter.api.Test;
 import pages.PracticeFormPage;
 
@@ -31,10 +31,10 @@ public class StudentRegistrationFormTest extends TestBase {
                 .resultTableShouldBeDisplayed(true);
 
         practiceFormPage
-                .checkResult("Student Name",rsd.firstName +" " + rsd.lastName)
-                .checkResult("Student Email",rsd.userEmail)
+                .checkResult("Student Name", rsd.firstName + " " + rsd.lastName)
+                .checkResult("Student Email", rsd.userEmail)
                 .checkResult("Gender", rsd.gender)
-                .checkResult("Mobile",rsd.phone)
+                .checkResult("Mobile", rsd.phone)
                 .checkResult("Date of Birth", rsd.dateOfBirth[0] + " " + rsd.dateOfBirth[1] + "," + rsd.dateOfBirth[2])
                 .checkResult("Subjects", rsd.subjects)
                 .checkResult("Hobbies", rsd.hobby)
@@ -58,9 +58,9 @@ public class StudentRegistrationFormTest extends TestBase {
                 .resultTableShouldBeDisplayed(true);
 
         practiceFormPage
-                .checkResult("Student Name",rsd.firstName +" " + rsd.lastName)
+                .checkResult("Student Name", rsd.firstName + " " + rsd.lastName)
                 .checkResult("Gender", rsd.gender)
-                .checkResult("Mobile",rsd.phone);
+                .checkResult("Mobile", rsd.phone);
     }
 
     @Test

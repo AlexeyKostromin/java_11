@@ -15,7 +15,7 @@ public class SelenideWikiTest {
     }
 
     @Test
-    public void wikiPageTest(){
+    public void wikiPageTest() {
         open("https://github.com/selenide/selenide");
         $("[id=wiki-tab]").click();
 
@@ -28,16 +28,16 @@ public class SelenideWikiTest {
         //$("[id=user-content-3-using-junit5-extend-test-class]").sibling(0).shouldHave(text("SoftAssertsExtension"));
         $x("//*[contains(@id, 'using-junit5-extend')]/following-sibling::div[1]").
                 shouldHave(text("@ExtendWith({SoftAssertsExtension.class})\n" +
-                                "class Tests {\n" +
-                                "  @Test\n" +
-                                "  void test() {\n" +
-                                "    Configuration.assertionMode = SOFT;\n" +
-                                "    open(\"page.html\");\n" +
-                                "\n" +
-                                "    $(\"#first\").should(visible).click();\n" +
-                                "    $(\"#second\").should(visible).click();\n" +
-                                "  }\n" +
-                                "}"));
+                        "class Tests {\n" +
+                        "  @Test\n" +
+                        "  void test() {\n" +
+                        "    Configuration.assertionMode = SOFT;\n" +
+                        "    open(\"page.html\");\n" +
+                        "\n" +
+                        "    $(\"#first\").should(visible).click();\n" +
+                        "    $(\"#second\").should(visible).click();\n" +
+                        "  }\n" +
+                        "}"));
 
     }
 

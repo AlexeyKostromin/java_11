@@ -12,7 +12,7 @@ import static com.codeborne.selenide.DragAndDropOptions.to;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class HomeWork5Tests {
+public class HomeWork5Test {
     @BeforeAll
     static void beforeAll() {
         Configuration.holdBrowserOpen = false;
@@ -20,7 +20,7 @@ public class HomeWork5Tests {
     }
 
     @Test
-    public void solutionsEnterprizeTest(){
+    public void solutionsEnterprizeTest() {
         open("https://github.com");
         $("[aria-label=Global]").$(byText("Solutions")).hover();
         $("[aria-labelledby=solutions-for-heading]").$(byText("Enterprise")).click();
@@ -29,7 +29,7 @@ public class HomeWork5Tests {
     }
 
     @Test
-    public void dragAndDropTest(){
+    public void dragAndDropTest() {
         open("https://the-internet.herokuapp.com/drag_and_drop");
         var elementA = $("[id=column-a]");
         var elementB = $("[id=column-b]");
@@ -44,7 +44,7 @@ public class HomeWork5Tests {
     }
 
     @Test
-    public void dragAndDropWebDriverMethodTest(){
+    public void dragAndDropWebDriverMethodTest() {
         open("https://the-internet.herokuapp.com/drag_and_drop");
 
         //does not work on this site

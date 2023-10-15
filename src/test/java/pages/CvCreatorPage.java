@@ -22,24 +22,23 @@ public class CvCreatorPage {
     public CvCreatorPage submitCookie() {
         try {
             submitCookieBtn.click();
+        } catch (ElementNotFound e) {
         }
-        catch (ElementNotFound e){}
 
         return this;
     }
 
-    public CvCreatorPage selectCvType(String cvType){
+    public CvCreatorPage selectCvType(String cvType) {
         cvTypeCollection.find(innerText(cvType)).click();
         return this;
     }
 
-    public CvCreatorPage verifyCvPicture(String expectedImageName){
+    public CvCreatorPage verifyCvPicture(String expectedImageName) {
         var src = cvImage.attr("src");
         Assertions.assertTrue(src.contains(expectedImageName),
                 "Expected image should contains text: " + expectedImageName + " but was" + src);
         return this;
     }
-
 
 
 }

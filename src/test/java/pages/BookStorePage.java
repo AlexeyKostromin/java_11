@@ -25,20 +25,17 @@ public class BookStorePage {
         String result = "";
         try {
             result = firstResult.getText();
-        }
-        catch (ElementNotFound e) {
+        } catch (ElementNotFound e) {
         }
         return result;
     }
+
     public BookStorePage verifyResult(String expectedBookName) {
         var result = getFirstSearchResult().toLowerCase();
         Assertions.assertTrue(result.contains(expectedBookName.toLowerCase()),
-                "expectedBookName was: "+ expectedBookName + ", but result was: " + result);
+                "expectedBookName was: " + expectedBookName + ", but result was: " + result);
         return this;
     }
-
-
-
 
 
 }

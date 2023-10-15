@@ -10,20 +10,20 @@ import java.util.Locale;
 
 public class RandomDataUtils {
     protected Faker faker;
-    
+
     public RandomDataUtils() {
         faker = new Faker(new Locale("en-US"));
     }
 
     public String[] generateDateOfBirth() {
-          var randomYear = Integer.toString(getRandomBetween(1900, 2022));
-          var randomMonth = (Month.values()[getRandomBetween(1,11)]).toString().toLowerCase();
-          randomMonth = Character.toUpperCase(randomMonth.charAt(0)) + randomMonth.substring(1);
-          var randomDay = Integer.toString(getRandomBetween(1,30));
-          return new String[] {randomDay, randomMonth, randomYear};
+        var randomYear = Integer.toString(getRandomBetween(1900, 2022));
+        var randomMonth = (Month.values()[getRandomBetween(1, 11)]).toString().toLowerCase();
+        randomMonth = Character.toUpperCase(randomMonth.charAt(0)) + randomMonth.substring(1);
+        var randomDay = Integer.toString(getRandomBetween(1, 30));
+        return new String[]{randomDay, randomMonth, randomYear};
     }
 
-    public String[] generateDateOfBirthFaker(){
+    public String[] generateDateOfBirthFaker() {
         var randomBirthday = faker.date().birthday(15, 65);//Sun Aug 04 22:09:15 CEST 1991
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MMMM/yyyy", Locale.ENGLISH);
         return sdf.format(randomBirthday).split("/");

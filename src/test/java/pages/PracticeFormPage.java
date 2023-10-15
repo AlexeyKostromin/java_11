@@ -24,8 +24,8 @@ public class PracticeFormPage {
             addressInput = $("[id=currentAddress]"),
             stateComboBox = $("[id=state]"),
             stateInput = $("[id=react-select-3-input]"),
-            cityComboBox =  $("[id=city]"),
-            cityInput =  $("[id=react-select-4-input]"),
+            cityComboBox = $("[id=city]"),
+            cityInput = $("[id=react-select-4-input]"),
             resultTable = $("[class=table-responsive]"),
             submitBtn = $("[id=submit]");
 
@@ -119,30 +119,30 @@ public class PracticeFormPage {
     public void resultTableShouldBeDisplayed(boolean flag) {
         if (flag) {
             resultTable.should(appear);
-        }
-        else {
+        } else {
             resultTable.shouldNot(appear);
         }
     }
 
     public PracticeFormPage verifyRequiredFieldsColor() {
         sleep(200);
-        var colorHexFirstName  = Color.fromString(firstNameInput.getCssValue("border-color")).asHex();
-        var colorHexLastName  = Color.fromString(lastNameInput.getCssValue("border-color")).asHex();
-        var colorHexPhone  = Color.fromString(phoneInput.getCssValue("border-color")).asHex();
+        var colorHexFirstName = Color.fromString(firstNameInput.getCssValue("border-color")).asHex();
+        var colorHexLastName = Color.fromString(lastNameInput.getCssValue("border-color")).asHex();
+        var colorHexPhone = Color.fromString(phoneInput.getCssValue("border-color")).asHex();
 
-        if (!colorHexFirstName.equals(expectedColorRed)){
+        if (!colorHexFirstName.equals(expectedColorRed)) {
             throw new RuntimeException("firstNameInput color was: " + colorHexFirstName + ", but expected: " + expectedColorRed);
         }
-        if (!colorHexLastName.equals(expectedColorRed)){
+        if (!colorHexLastName.equals(expectedColorRed)) {
             throw new RuntimeException("firstNameInput color was: " + colorHexLastName + ", but expected: " + expectedColorRed);
         }
-        if (!colorHexPhone.equals(expectedColorRed)){
+        if (!colorHexPhone.equals(expectedColorRed)) {
             throw new RuntimeException("firstNameInput color was: " + colorHexPhone + ", but expected: " + expectedColorRed);
         }
         return this;
 
     }
+
     public PracticeFormPage verifyNonRequiredFieldsColor() {
         sleep(200);
         var colorHexEmail = Color.fromString(emailInput.getCssValue("border-color")).asHex();
