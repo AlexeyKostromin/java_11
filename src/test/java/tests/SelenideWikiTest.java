@@ -1,6 +1,9 @@
+package tests;
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selectors.byText;
@@ -14,6 +17,7 @@ public class SelenideWikiTest {
         Configuration.browserSize = "1920x1280";
     }
 
+    @Tag("Smoke")
     @Test
     public void wikiPageTest() {
         open("https://github.com/selenide/selenide");

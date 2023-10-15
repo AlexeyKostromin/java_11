@@ -1,6 +1,7 @@
 package tests;
 
 import helpers.RandomStudentDataGenerator;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.PracticeFormPage;
 
@@ -8,6 +9,7 @@ import pages.PracticeFormPage;
 public class StudentRegistrationFormTest extends TestBase {
     PracticeFormPage practiceFormPage = new PracticeFormPage();
 
+    @Tag("Smoke")
     @Test
     void successSubmitAllFormTest() {
 

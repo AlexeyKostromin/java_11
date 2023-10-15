@@ -50,7 +50,7 @@ public class HomeWork10JunitTest extends TestBase {
         );
     }
 
-    @Tags({@Tag("Language"), @Tag("Regression")})
+    @Tags({@Tag("Language"), @Tag("Smoke")})
     @MethodSource("headerMenuItemsDependingOfLanguageTest")
     @ParameterizedTest
     @DisplayName("Verifies that Menu items displays according to selected language")
