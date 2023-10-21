@@ -27,26 +27,27 @@ public class FilesDownloadUploadTest {
     }
     @Test
 
-    void downloadXlxFileTest() throws Exception{
+    void downloadXlsFileTest() throws Exception{
         open("https://excelvba.ru/programmes/Teachers?ysclid=lfcu77j9j9951587711");
         File downloaded =  $x("//*[text()='teachers.xls']").download();
         XLS xls = new XLS(downloaded);
         Assertions.assertEquals("дополнительная информация",
                 xls.excel.getSheetAt(2).getRow(2).getCell(11).getStringCellValue());
     }
+
+    @Test
+    void downloadPdfFileTest() throws Exception{
+        open("https://junit.org/junit5/docs/current/user-guide/");
+        File downloaded =  $x("//a[@href = 'junit-user-guide-5.10.0.pdf']").download();
+        PDF pdf = new PDF(downloaded);
+        Assertions.assertEquals("JUnit 5 User Guide", pdf.title);
+    }
+
     @Test
     void uploadFileTest() throws Exception{
         open("https://fineuploader.com/demos.html");
         $x("//input[@type = 'file']").uploadFromClasspath("cat.png");
         $(".qq-file-name").shouldHave(text("cat.png"));
-    }
-
-    @Test
-    void uploadPdfFileTest() throws Exception{
-        open("https://junit.org/junit5/docs/current/user-guide/");
-        File downloaded =  $x("//a[@href = 'junit-user-guide-5.10.0.pdf']").download();
-        PDF pdf = new PDF(downloaded);
-        Assertions.assertEquals("JUnit 5 User Guide", pdf.title);
     }
 
 }
