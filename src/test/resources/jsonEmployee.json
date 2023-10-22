@@ -1,0 +1,18 @@
+{
+  "first_Name": "Adrian",
+  "last_Name": "Sparrow",
+  "age": "43",
+  "address": {
+    "street": "Albany Dr",
+    "city": "San Jose",
+    "zipcode": 95129
+  },
+  "cities": [
+    "Los Angeles",
+    "New York"
+  ],
+  "properties": {
+    "role": "Manager",
+    "salary": "5000 USD"
+  }
+}
