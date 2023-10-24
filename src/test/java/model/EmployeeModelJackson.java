@@ -4,23 +4,6 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 
 import java.util.List;
 import java.util.Map;
-//{
-//        "first_Name": "Adrian",
-//        "last_Name": "Sparrow",
-//        "age": "43",
-//
-//        "address": {
-//        "street": "Albany Dr",
-//        "city": "San Jose",
-//        "zipcode": 95129
-//        },
-//
-//        "role": "Manager",
-//        "cities": [
-//        "Los Angeles",
-//        "New York"
-//        ]
-//        }
 
 public class EmployeeModelJackson {
 

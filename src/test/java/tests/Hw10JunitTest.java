@@ -15,7 +15,7 @@ import pages.EnelMedPage;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class HomeWork10JunitTest extends TestBase {
+public class Hw10JunitTest extends TestBase {
 
     @Tag("DemoQA")
     @ValueSource(strings = {"api", "javaScript", "GIT"})

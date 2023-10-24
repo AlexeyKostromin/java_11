@@ -5,6 +5,7 @@ import com.codeborne.xlstest.XLS;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.opencsv.CSVReader;
 import model.EmployeeModelJackson;
+import model.GlossaryModel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -18,6 +19,7 @@ import java.util.zip.ZipInputStream;
 
 public class Hw11FilesTest {
     ClassLoader cl = Hw11FilesTest.class.getClassLoader();
+    ObjectMapper objectMapper = new ObjectMapper();
 
     @Test
     void zipTest() throws Exception {
@@ -50,7 +52,7 @@ public class Hw11FilesTest {
 
 
     @Test
-    void jsonEmployeeTest() throws Exception {
+    void jsonEmployeeFileTest() throws Exception {
         File file = new File("src/test/resources/jsonEmployee.json");
         ObjectMapper objectMapper = new ObjectMapper();
         EmployeeModelJackson employeeModel = objectMapper.readValue(file, EmployeeModelJackson.class);
@@ -63,6 +65,23 @@ public class Hw11FilesTest {
         Assertions.assertEquals("New York", employeeModel.getCities().get(1));
         Assertions.assertEquals("Manager", employeeModel.getProperties().get("role"));
         Assertions.assertEquals("5000 USD", employeeModel.getProperties().get("salary"));
+    }
+
+    @Test
+    void jsonEmployeeStreamTest()  throws Exception {
+        try (InputStream stream = cl.getResourceAsStream("jsonEmployee.json");
+             Reader reader = new InputStreamReader(stream)) {
+            EmployeeModelJackson employeeModel = objectMapper.readValue(reader, EmployeeModelJackson.class);
+
+            Assertions.assertEquals("Adrian", employeeModel.getFirstName());
+            Assertions.assertEquals("Sparrow", employeeModel.getLastName());
+            Assertions.assertEquals(43, employeeModel.getAge());
+            Assertions.assertEquals("Albany Dr, San Jose, 95129", employeeModel.getAddress().toString());
+            Assertions.assertEquals("Los Angeles", employeeModel.getCities().get(0));
+            Assertions.assertEquals("New York", employeeModel.getCities().get(1));
+            Assertions.assertEquals("Manager", employeeModel.getProperties().get("role"));
+            Assertions.assertEquals("5000 USD", employeeModel.getProperties().get("salary"));
+        }
     }
 
 
